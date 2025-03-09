@@ -1,6 +1,5 @@
 <?php
 include(__DIR__ . "/../../Connection/connection.php");
-
 $sql= "CREATE TABLE questions(
                               id int AUTO_INCREMENT PRIMARY KEY,
                               question varchar(255) NOT NULL,
