@@ -1,6 +1,6 @@
 <?php
 include_once("UserSkeleton.php");
-include_once(__DIR__ . "/../../Connection/connection.php");
+include_once(__DIR__ . "/../Connection/connection.php");
 include_once(__DIR__ . "/../utils/utils.php");
 
 class User {
