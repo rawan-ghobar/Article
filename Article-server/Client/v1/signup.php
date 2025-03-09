@@ -60,11 +60,5 @@ $user = new User($mysqli);
 
 $result = $user->createUser($userSkeleton);
 
-if ($result === "User created successfully!") {
-    echo json_encode(["success" => true, "message" => $result]);
-} else {
-    echo json_encode(["success" => false, "message" => $result]);
-}
-
 json_encode($result);
 ?>
