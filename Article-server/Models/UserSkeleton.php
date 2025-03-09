@@ -1,91 +1,53 @@
 <?php
-include_once("UserSkeleton.php");
-include(__DIR__ . "/../../Connection/connection.php");
 
-class User {
-    private $mysqli;
+class UserSkeleton
+{
+    private $id;
+    private $full_name;
+    private $user_password;
+    private $email;
 
-    public function __construct($mysqli)
+    public function __construct($id, $full_name, $user_password, $email)
     {
-        $this->mysqli = $mysqli;
+        $this->id = $id;
+        $this->full_name = $full_name;
+        $this->user_password = $user_password;
+        $this->email = $email;
     }
 
-    public function createUser(UserSkeleton $user)
+    public function getId()
     {
-        $sql = "INSERT INTO users (full_name, user_password, email) VALUES (?, ?, ?)";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("sss", $full_name, $hashed_password, $email);
-
-        $full_name = $user->getFullName();
-        $hashed_password = $user->getHashedPassword();
-        $email = $user->getEmail();
-
-        if ($stmt->execute())
-        {
-            return "User created successfully!";
-        }
-        else
-        {
-            return "Error: " . $this->mysqli->error;
-        }
-    }
-    
-    public function getUserByEmail($email) {
-        $sql = "SELECT full_name, user_password, email FROM users WHERE email = ?";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->bind_result($full_name, $hashed_password, $email);
-    
-        if ($stmt->fetch()) {
-            return new UserSkeleton($full_name, $hashed_password, $email);
-        }
-        return null;
-    }
-    
-
-    public function getUserById($id)
-    {
-        $sql = "SELECT full_name, user_password, email FROM users WHERE id = ?";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->bind_result($full_name, $hashed_password, $email);
-
-        if ($stmt->fetch())
-        {
-            return new UserSkeleton($full_name, $hashed_password, $email);
-        }
-        return null;
+        return $this->id;
     }
 
-    public function updateUser($id, $new_name)
+    public function getFullName()
     {
-        $sql = "UPDATE users SET full_name = ? WHERE id = ?";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("si", $new_name, $id);
-
-        if ($stmt->execute())
-        {
-            return "User updated successfully!";
-        }
-        else
-        {
-            return "Error: " . $this->mysqli->error;
-        }
+        return $this->full_name;
     }
 
-    public function deleteUser($id)
+    public function getPassword()
     {
-        $sql = "DELETE FROM users WHERE id = ?";
-        $stmt = $this->mysqli->prepare($sql);
-        $stmt->bind_param("i", $id);
+        return $this->user_password;
+    }
 
-        if ($stmt->execute()) {
-            return "User deleted successfully!";
-        } else {
-            return "Error: " . $this->mysqli->error;
-        }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setFullName($full_name)
+    {
+        $this->full_name = $full_name;
+    }
+
+    public function setPassword($user_password)
+    {
+        $this->user_password = hash('sha256', $user_password);
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 }
 ?>
