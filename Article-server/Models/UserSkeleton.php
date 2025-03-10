@@ -42,7 +42,7 @@ class UserSkeleton
 
     public function setPassword($user_password)
     {
-        $this->user_password = hash('sha256', $user_password);
+        $this->user_password = $user_password;
     }
 
     public function setEmail($email)
