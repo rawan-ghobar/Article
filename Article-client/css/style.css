@@ -11,7 +11,7 @@ body, html {
 }
 
 .navbar {
-    background-color: #4B006E;
+    background-color: #48A6A7;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -45,43 +45,52 @@ body, html {
     text-decoration: underline;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
+.main-content {
+    text-align: center;
+    padding: 50px 20px;
+    flex: 1;
 }
 
-.services-btn {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+.main-content > h1{
+    font-family: "Jost";
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1;
-    border-radius: 6px;
-    margin-top: 5px;
+.main-title {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #48A6A7;
 }
 
-.dropdown-content a {
-    color: #4B006E !important;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s;
+.sub-title {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color:  #48A6A7;
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-    text-decoration: none !important;
+.box {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-width: 300px;
+    flex-shrink: 0; 
+}
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+.faq-question {
+    font-size: 1.5rem; 
+    color: #48A6A7;
+    margin-bottom: 10px;
+}
+
+.faq-answer {
+    font-size: 1.2rem; 
+    color: #333;
+    line-height: 1.6;
 }
 
 .background {
@@ -140,31 +149,7 @@ body, html {
     font-family: "Jost";
     margin-bottom: 5px;
 }
-
-.custom-file-upload {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
   
-  .upload-btn {
-    background-color: #48A6A7;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .upload-btn:hover {
-    background-color: #3b8788;
-  }
-  
-  .hidden-file-input {
-    display: none;
-  }
 
 label {
     display: block;
@@ -207,6 +192,33 @@ a {
     color: inherit;
     display:block;
 }
+
+.search-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #48A6A7; 
+    border-right: none; 
+    border-radius: 5px 0 0 5px; 
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #48A6A7; 
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0; 
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #3a9697; 
+}
+
 
 @font-face {
     font-family: "Jost";
