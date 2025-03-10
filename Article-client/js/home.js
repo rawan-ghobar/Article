@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const question = faq.querySelector('.faq-question').textContent.toLowerCase();
             const answer = faq.querySelector('.faq-answer').textContent.toLowerCase();
             if (question.includes(searchText) || answer.includes(searchText)) {
-                faq.style.display = ''; // Show the FAQ
+                faq.style.display = '';
             } else {
-                faq.style.display = 'none'; // Hide the FAQ
+                faq.style.display = 'none'; 
             }
         });
     }
@@ -66,5 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
         filterFAQs(searchText);
     });
 
+    document.getElementById('addNewBtn').addEventListener('click', function() {
+        window.location.href = 'faq.html';
+    });
+    
     fetchFAQs();
 });
