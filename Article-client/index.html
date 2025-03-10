@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to YallaPay!</title>
+    <link rel="stylesheet" href="/Article-client/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="boxtext">
+                <p>Log into your account now!</p>
+            </div>
+
+            <form class="signup-form">
+                <div class="form-field">
+                    <label for="login">Email*</label>
+                    <input type="text" placeholder="Email" name="login" id="email">
+                </div>
+                <div class="form-field">
+                    <label for="password">Password*</label>
+                    <input type="password" placeholder="Password" name="password" id="user_password">
+                </div>
+                <button type="button" class="submit-btn" id="login-button">Login</button>
+            <div class="message" id="errorMessage"></div>
+            <div class="alternate">
+                <p>Already have an account?</p>
+                <a href="signup.html">Signup</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
