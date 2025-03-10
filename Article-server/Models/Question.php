@@ -17,6 +17,18 @@ class Question {
         $question = $questionSkeleton->getQuestion();
         $answer = $questionSkeleton->getAnswer();
 
+        $checkSql = "SELECT question FROM questions WHERE question = ?";
+        $checkStmt = $this->mysqli->prepare($checkSql);
+        $checkStmt->bind_param("s", $question);
+        $checkStmt->execute();
+        $checkResult = $checkStmt->get_result();
+        $checkStmt->close();
+
+        if ($checkResult->num_rows > 0)
+        {
+            return "This question already exists!";
+        }
+
         $sql = "INSERT INTO questions (question, answer) VALUES (?, ?)";
         $stmt = $this->mysqli->prepare($sql);
 
@@ -74,7 +86,6 @@ class Question {
         }
     }
 
-    // Delete an FAQ
     public function deleteQuestion($id)
     {
         $sql = "DELETE FROM faqs WHERE id = ?";
