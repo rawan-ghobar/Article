@@ -24,7 +24,8 @@ class User {
 
         if ($result->num_rows > 0)
         {
-            return "User already exists, please login.";
+            response(false, "User already exists, please login");
+            return;
         }
 
         $hashed_password = hash('sha256', $user_password);
@@ -35,7 +36,8 @@ class User {
 
         if ($stmt->execute())
         {
-            return "User created successfully!";
+            response(true, "User created successfully");
+            return;
         }
         else
         {

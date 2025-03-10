@@ -210,12 +210,12 @@ a {
 
 @font-face {
     font-family: "Jost";
-    src: url("/wallet-client/assets/fonts/Jost/static/Jost-Italic.ttf");
+    src: url("/Article-client/assets/fonts/Jost/static/Jost-Italic.ttf");
 }
 
 @font-face {
     font-family: "Jost text";
-    src: url("/wallet-client/assets/fonts/Jost/static/Jost-Medium.ttf");
+    src: url("/Article-client/assets/fonts/Jost/static/Jost-Medium.ttf");
 }
 
 @media only screen and (max-width: 460px) {
