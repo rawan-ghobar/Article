@@ -45,8 +45,10 @@ class Question {
         $questions = [];
 
         if ($result) {
-            while ($row = $result->fetch_assoc()) {
-                $questions[] = new QuestionSkeleton($row['question'], $row['answer']);
+            while ($row = $result->fetch_assoc())
+            {
+                $questionSkeleton = new QuestionSkeleton($row['question'], $row['answer']);
+                $questions[] = $questionSkeleton->toArray();
             }
             return $questions;
         } else {

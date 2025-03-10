@@ -28,5 +28,15 @@ class QuestionSkeleton
     {
         $this->answer= $answer;
     }
+
+    public function toArray()
+    {
+        return
+        [
+            'question' => $this->question,
+            'answer' => $this->answer
+        ];
+    }
+
 }
 ?>
