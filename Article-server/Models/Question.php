@@ -1,7 +1,7 @@
 <?php
 
 include_once("QuestSkeleton.php");
-include_once(__DIR__ . "/../../Connection/connection.php");
+include_once(__DIR__ . "/../Connection/connection.php");
 include_once(__DIR__ . "/../utils/utils.php");
 
 class Question {
@@ -40,54 +40,69 @@ class Question {
 
     public function getAllQuestions()
     {
-        $sql = "SELECT question, answer FROM faqs";
+        $sql = "SELECT question, answer FROM questions";
         $result = $this->mysqli->query($sql);
         $questions = [];
 
-        if ($result) {
+        if ($result)
+        {
             while ($row = $result->fetch_assoc())
             {
                 $questionSkeleton = new QuestionSkeleton($row['question'], $row['answer']);
                 $questions[] = $questionSkeleton->toArray();
             }
             return $questions;
-        } else {
+        }
+
+        else
+        {
             return "Error: " . $this->mysqli->error;
         }
     }
 
-    public function updateQuestion($id, QuestionSkeleton $question)
+    public function updateQuestion($id, QuestionSkeleton $questionSkeleton)
     {
-        $sql = "UPDATE faqs SET question = ?, answer = ? WHERE id = ?";
+        $question = $questionSkeleton->getQuestion();
+        $answer = $questionSkeleton->getAnswer();
+
+        $sql = "UPDATE questions SET question = ?, answer = ? WHERE id = ?";
         $stmt = $this->mysqli->prepare($sql);
-        if (!$stmt) {
+
+        if (!$stmt)
+        {
             return "Error preparing statement: " . $this->mysqli->error;
         }
 
-        $stmt->bind_param("ssi", $question->getQuestion(), $question->getAnswer(), $id);
-        if ($stmt->execute()) {
+        $stmt->bind_param("ssi", $question, $answer, $id);
+        if ($stmt->execute())
+        {
             $stmt->close();
             return "Question updated successfully!";
-        } else {
+        }
+        else
+        {
             $stmt->close();
             return "Error: " . $this->mysqli->error;
         }
     }
 
-    // Delete an FAQ
     public function deleteQuestion($id)
     {
-        $sql = "DELETE FROM faqs WHERE id = ?";
+        $sql = "DELETE FROM questions WHERE id = ?";
         $stmt = $this->mysqli->prepare($sql);
-        if (!$stmt) {
+        if (!$stmt)
+        {
             return "Error preparing statement: " . $this->mysqli->error;
         }
 
         $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
+        if ($stmt->execute())
+        {
             $stmt->close();
             return "Question deleted successfully!";
-        } else {
+        }
+        else
+        {
             $stmt->close();
             return "Error: " . $this->mysqli->error;
         }
