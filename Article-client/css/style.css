@@ -219,6 +219,28 @@ a {
     background-color: #3a9697; 
 }
 
+.search-form button#addNewBtn {
+    border: 2px solid #48A6A7;
+    background-color: transparent;
+    color: #48A6A7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-form button#addNewBtn:hover {
+    background-color: #48A6A7;
+    color: white;
+}
+
+.search-form img {
+    width: 20px;
+    height: 20px;
+}
+
 
 @font-face {
     font-family: "Jost";
